@@ -56,7 +56,7 @@ diabetes-prediction-app/
 ## 📸 Screenshot 1
 
 <p align="center">
- <img width="1919" height="1076" alt="Screenshot 2025-08-02 133031" src="https://github.com/user-attachments/assets/07912bdc-f40e-47c1-a246-f48cedceac53" ="App Screenshot" width="700"/>
+ <img width="1919" height="1076" alt="Screenshot 2025-08-02 133031" src="https://github.com/user-attachments/assets/07912bdc-f40e-47c1-a246-f48cedceac53" />
 </p>
 
 ---
