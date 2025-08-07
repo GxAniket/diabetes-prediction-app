@@ -16,12 +16,12 @@
 
 ## ✨ Features
 
-- 🧠 Predict diabetes risk using ML
-- 📋 User-friendly web form for data input
-- ⚖️ Data pre-processing and scaling
-- ⚡ Real-time predictions via trained model
-- 🎨 Responsive frontend using HTML/CSS
-- 📂 Easy-to-understand project structure
+- 🧠 Predict diabetes risk using ML  
+- 📋 User-friendly web form for data input  
+- ⚖️ Data pre-processing and scaling  
+- ⚡ Real-time predictions via trained model  
+- 🎨 Responsive frontend using HTML/CSS  
+- 📂 Easy-to-understand project structure  
 
 ---
 
@@ -56,20 +56,23 @@ diabetes-prediction-app/
 ## 📸 Screenshot 1
 
 <p align="center">
- <img width="1919" height="1076" alt="Screenshot 2025-08-02 133031" src="https://github.com/user-attachments/assets/07912bdc-f40e-47c1-a246-f48cedceac53" />
+  <img src="https://github.com/user-attachments/assets/07912bdc-f40e-47c1-a246-f48cedceac53" alt="Screenshot 1" style="max-width:100%; height:auto;" />
 </p>
 
 ---
+
 ## 📸 Screenshot 2
-<p>
-  <img width="1919" height="1079" alt="Screenshot 2025-08-02 143118" src="https://github.com/user-attachments/assets/6ce96e96-4f37-454e-afb7-72060952fa02" />
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6ce96e96-4f37-454e-afb7-72060952fa02" alt="Screenshot 2" style="max-width:100%; height:auto;" />
 </p>
 
 ---
+
 ## 📸 Screenshot 3
 
-<p>
-  <img width="1918" height="1078" alt="Screenshot 2025-08-02 143247" src="https://github.com/user-attachments/assets/4172efca-9e4b-4f18-b3db-e4355509b9c1" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4172efca-9e4b-4f18-b3db-e4355509b9c1" alt="Screenshot 3" style="max-width:100%; height:auto;" />
 </p>
 
 ---
