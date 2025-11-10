@@ -78,7 +78,6 @@ diabetes-prediction-app/
 
 <p align="center">
   <img width="1897" height="910" alt="image" src="https://github.com/user-attachments/assets/b12581c3-73ea-459a-a64b-6e7637336a89" />
-/>
 </p>
 
 ----
