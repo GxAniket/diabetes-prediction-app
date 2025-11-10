@@ -73,6 +73,16 @@ diabetes-prediction-app/
 </p>
 
 ---
+
+## 📸 Screenshot 4 (After Updating the Frontend Background)
+
+<p align="center">
+  <img width="1897" height="910" alt="image" src="https://github.com/user-attachments/assets/b12581c3-73ea-459a-a64b-6e7637336a89" />
+/>
+</p>
+
+----
+
 ## ▶️ How to Run Locally
 
 1. **Clone the Repository**
