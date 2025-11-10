@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetes Prediction</title>
+    <title>Diabetes Prognoser</title>
     <style>
         /* CSS starts here */
         :root {
-            --primary-color: #5fa3a3;
-            --primary-hover: #4e8a8a;
-            --secondary-bg: #f0f4f7; 
-            --card-bg: #ffffff;
+            --primary-color: #008744; /* Green for Submit */
+            --primary-hover: #006d36;
+            --reset-color: #4CAF50; /* Green for Reset button, as seen in the image */
+            --reset-hover: #388e3c;
+            --card-bg: rgba(255, 255, 255, 0.1); /* Transparent/Frosted effect */
             --text-color: #333;
             --light-text-color: #777;
             --border-color: #e0e0e0;
-            --success-color: #4CAF50;
+            --form-text: #2c3e50; /* Darker text for fields/labels */
+            --success-color: #008744; 
             --success-bg: #e8f5e9;
             --danger-color: #f44336;
             --danger-bg: #ffebee;
-            --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.05);
             --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.08);
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #e3f2fd, #c8e6c9);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Placeholder for image background and blur overlay */
+            background: url("../images/background.png") center/cover no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -33,144 +35,155 @@
             padding: 25px;
             box-sizing: border-box;
             color: var(--text-color);
+            position: relative;
         }
 
+        /* Added overlay for the frosted glass effect on the background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(192, 192, 192, 0.3);
+            z-index: -1;
+        }
+        
         .container {
-            background: var(--card-bg);
+            background: var(--card-bg); 
             padding: 40px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-medium);
+            border-radius: 10px;
             width: 100%;
-            max-width: 550px;
+            max-width: 650px; /* Compacted size */
             box-sizing: border-box;
-            position: relative;
-            overflow: hidden;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow-medium);
         }
 
         h1 {
             text-align: center;
-            margin-bottom: 35px;
-            color: var(--text-color);
-            font-size: 2.2em;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2.5em;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
+        /* Layout for 2 columns */
         .input-group {
             display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
+            flex-wrap: wrap; 
+            gap: 25px 30px; 
+            margin-bottom: 10px; /* Reduced vertical spacing between rows */
         }
 
         .input-container {
             position: relative;
-            flex: 1;
+            /* Two columns: 50% width minus half the gap */
+            flex: 1 1 calc(50% - 15px); 
+            min-width: 200px;
+            display: flex;
+            flex-direction: column; /* Static label above input */
         }
 
-        .input-container input {
-            width: 100%;
-            padding: 14px 18px;
-            padding-top: 22px;
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            box-sizing: border-box;
-            font-size: 1.05em;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease, padding 0.2s ease;
-            background-color: var(--secondary-bg);
+        /* Static Label Styling (Replaced Floating Labels) */
+        .input-container .field-label {
+            color: var(--form-text);
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
         }
 
-        .input-container label {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
+        .input-container .field-example {
             color: var(--light-text-color);
             font-size: 0.9em;
-            pointer-events: none;
-            transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease, transform 0.2s ease;
-            background-color: transparent;
-            z-index: 1;
+            font-weight: 400;
+            margin-left: 5px;
         }
-
-        .input-container input:focus + label,
-        .input-container input:not(:placeholder-shown) + label {
-            top: 6px;
-            font-size: 0.7em;
-            color: var(--primary-color);
-            transform: translateY(0);
-            font-weight: 600;
+        
+        .input-container input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1.1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: #fff; /* White background for inputs */
+            color: var(--text-color);
         }
-
+        
         .input-container input:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(95, 163, 163, 0.2);
+            box-shadow: 0 0 0 2px rgba(0, 135, 68, 0.2);
             outline: none;
-            background-color: var(--card-bg);
         }
 
-        .button-group {
+        /* Remove unused floating label styles from original code */
+        .input-container label:not(.field-label) {
+            display: none;
+        }
+
+        .button-row {
             display: flex;
+            justify-content: space-between;
+            margin-top: 35px;
             gap: 20px;
-            margin-top: 25px;
         }
-
-        .button-group button {
-            flex: 1;
-        }
-
+        
         button {
-            width: 100%;
-            padding: 16px;
-            background-color: var(--primary-color);
+            padding: 15px 35px;
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 5px;
             font-weight: 700;
             font-size: 1.15em;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             letter-spacing: 0.8px;
-            box-shadow: 0 6px 15px rgba(95, 163, 163, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            flex: 1; /* Make buttons take equal space */
         }
 
-        button:hover {
+        .submit-button {
+            background-color: var(--primary-color);
+        }
+
+        .submit-button:hover {
             background-color: var(--primary-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(95, 163, 163, 0.4);
-        }
-
-        button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 5px rgba(95, 163, 163, 0.2);
+            transform: translateY(-2px);
         }
 
         .reset-button {
-            background-color: #f44336;
-            box-shadow: 0 6px 15px rgba(244, 67, 54, 0.3);
+            background-color: var(--reset-color); 
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.2);
         }
 
         .reset-button:hover {
-            background-color: #d32f2f;
-            box-shadow: 0 8px 20px rgba(244, 67, 54, 0.4);
+            background-color: var(--reset-hover);
+            transform: translateY(-2px);
         }
 
         .result {
             margin-top: 35px;
             padding: 20px;
             text-align: center;
-            font-size: 1.6em;
-            border-radius: 12px;
+            font-size: 1.4em; /* Slightly reduced font size for result */
+            border-radius: 8px;
             font-weight: 700;
-            box-shadow: var(--shadow-light);
         }
         
-        .result.positive {
+        .result.positive { /* High Risk */
             color: var(--danger-color);
             background-color: var(--danger-bg);
             border: 1px solid var(--danger-color);
         }
 
-        .result.negative {
+        .result.negative { /* Low Risk */
             color: var(--success-color);
             background-color: var(--success-bg);
             border: 1px solid var(--success-color);
@@ -183,81 +196,64 @@
         }
 
         /* Responsive adjustments */
-        @media (max-width: 600px) {
-            .input-group {
-                flex-direction: column;
-                gap: 0;
-            }
+        @media (max-width: 650px) {
             .input-container {
-                margin-bottom: 18px;
+                flex: 1 1 100%; /* Single column on smaller screens */
             }
-            .input-group .input-container:last-child {
-                margin-bottom: 0;
-            }
-            .container {
-                padding: 30px;
-            }
-            h1 {
-                font-size: 1.9em;
-                margin-bottom: 25px;
-            }
-            .result {
-                font-size: 1.3em;
-            }
-            .button-group {
+            .button-row {
                 flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Predict Your Diabetes Risk</h1>
+        <h1>DIABETES PROGNOSER</h1>
         <form id="predictionForm">
             <div class="input-group">
                 <div class="input-container">
-                    <input type="number" name="Pregnancies" id="pregnancies" placeholder=" " min="0" required>
-                    <label for="pregnancies">Number of Pregnancies</label>
+                    <label for="pregnancies" class="field-label">Pregnancies <span class="field-example">(Count)</span>:</label>
+                    <input type="number" name="Pregnancies" id="pregnancies" placeholder="" min="0" required>
                 </div>
                 <div class="input-container">
-                    <input type="number" name="Glucose" id="glucose" placeholder=" " min="0" required>
-                    <label for="glucose">Glucose Level (mg/dL)</label>
+                    <label for="glucose" class="field-label">Glucose (mg/dL) <span class="field-example">(Plasma)</span>:</label>
+                    <input type="number" name="Glucose" id="glucose" placeholder="" min="0" required>
                 </div>
-            </div>
-            <div class="input-group">
+                
                 <div class="input-container">
-                    <input type="number" name="BloodPressure" id="bloodPressure" placeholder=" " min="0" required>
-                    <label for="bloodPressure">Blood Pressure (mmHg)</label>
-                </div>
-                <div class="input-container">
-                    <input type="number" name="SkinThickness" id="skinThickness" placeholder=" " min="0" required>
-                    <label for="skinThickness">Skin Thickness (mm)</label>
-                </div>
-            </div>
-            <div class="input-group">
-                <div class="input-container">
-                    <input type="number" name="Insulin" id="insulin" placeholder=" " min="0" required>
-                    <label for="insulin">Insulin Level (mu U/ml)</label>
+                    <label for="bloodPressure" class="field-label">Blood Pressure (mmHg) <span class="field-example">(Diastolic)</span>:</label>
+                    <input type="number" name="BloodPressure" id="bloodPressure" placeholder="" min="0" required>
                 </div>
                 <div class="input-container">
-                    <input type="number" name="BMI" id="bmi" placeholder=" " step="0.1" min="0" required>
-                    <label for="bmi">BMI (e.g., 25.5)</label>
+                    <label for="skinThickness" class="field-label">Skin Thickness (mm) <span class="field-example">(Triceps)</span>:</label>
+                    <input type="number" name="SkinThickness" id="skinThickness" placeholder="" min="0" required>
                 </div>
             </div>
+
             <div class="input-group">
                 <div class="input-container">
-                    <input type="number" name="DiabetesPedigreeFunction" id="dpf" placeholder=" " step="0.001" min="0" required>
-                    <label for="dpf">Diabetes Pedigree Function</label>
+                    <label for="insulin" class="field-label">Insulin (mu U/ml) <span class="field-example">(Serum)</span>:</label>
+                    <input type="number" name="Insulin" id="insulin" placeholder="" min="0" required>
                 </div>
                 <div class="input-container">
-                    <input type="number" name="Age" id="age" placeholder=" " min="0" required>
-                    <label for="age">Age</label>
+                    <label for="bmi" class="field-label">BMI (kg/m²) <span class="field-example">(e.g., 25.5)</span>:</label>
+                    <input type="number" name="BMI" id="bmi" placeholder="" step="0.1" min="0" required>
+                </div>
+            
+                <div class="input-container">
+                    <label for="dpf" class="field-label">Diabetes Pedigree Function <span class="field-example">(Genetic risk)</span>:</label>
+                    <input type="number" name="DiabetesPedigreeFunction" id="dpf" placeholder="" step="0.001" min="0" required>
+                </div>
+                <div class="input-container">
+                    <label for="age" class="field-label">Age (years):</label>
+                    <input type="number" name="Age" id="age" placeholder="" min="0" required>
                 </div>
             </div>
             
-            <div class="button-group">
-                <button type="button" onclick="getPrediction()">Get Prediction</button>
-                <button type="button" class="reset-button" onclick="resetForm()">Reset</button>
+            <div class="button-row">
+                <button type="button" class="reset-button" onclick="resetForm()">RESET</button>
+                <button type="button" class="submit-button" onclick="getPrediction()">SUBMIT</button>
             </div>
             
         </form>
@@ -270,7 +266,7 @@
          */
         function resetForm() {
             const form = document.getElementById('predictionForm');
-            form.reset();
+            form.reset(); // Clears all input values
             const resultDiv = document.getElementById('result');
             resultDiv.style.display = 'none';
             resultDiv.textContent = '';
@@ -279,8 +275,6 @@
 
         /**
          * Simulates a prediction based on form data and displays the result.
-         * Note: This is a placeholder function. In a real application, you would
-         * send the form data to a machine learning model for a real prediction.
          */
         function getPrediction() {
             const form = document.getElementById('predictionForm');
@@ -304,10 +298,10 @@
                 resultDiv.textContent = "⚠️ Please fill in all required fields.";
                 resultDiv.classList.add('warning');
                 resultDiv.style.display = 'block';
-                return; // Stop execution if fields are missing
+                return; 
             }
 
-            // Simulate a simple prediction based on Glucose level and Age
+            // Simulate a simple prediction based on Glucose level and Age (using the logic from the original JS)
             const glucose = parseFloat(document.getElementById('glucose').value);
             const age = parseInt(document.getElementById('age').value);
             let isDiabetic = false;
@@ -319,12 +313,10 @@
             // Display the result
             resultDiv.style.display = 'block';
             if (isDiabetic) {
-                resultDiv.textContent = "Prediction: You may have a risk of diabetes.";
-                resultDiv.classList.add('positive'); // Add danger styling
+                resultDiv.textContent = "Prediction: High Risk of Diabetes";
+                resultDiv.classList.add('positive');
             } else {
-                // If not diabetic, keep the result div empty as per your request
-                // and apply the "negative" class for styling if desired.
-                resultDiv.textContent = "Prediction: You currently show no significant risk of diabetes based on these factors."; // Added a positive message for clarity
+                resultDiv.textContent = "Prediction: Low Risk of Diabetes";
                 resultDiv.classList.add('negative'); 
             }
         }
