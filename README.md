@@ -53,20 +53,20 @@ diabetes-prediction-app/
 
 ---
 
-## 📸 Screenshot 1
+## 📸 Application Interface
 
 <p align="center">
  <img width="1919" height="1076" alt="Screenshot 2025-08-02 133031" src="https://github.com/user-attachments/assets/07912bdc-f40e-47c1-a246-f48cedceac53" ="App Screenshot" width="700"/>
 </p>
 
 ---
-## 📸 Screenshot 2
+## 📸✅ Prediction Result - No Diabetes Risk
 <p>
   <img width="1919" height="1079" alt="Screenshot 2025-08-02 143118" src="https://github.com/user-attachments/assets/6ce96e96-4f37-454e-afb7-72060952fa02" />
 </p>
 
 ---
-## 📸 Screenshot 3
+## 📸⚠️ Prediction Result - Possible Diabetes Risk
 
 <p>
   <img width="1918" height="1078" alt="Screenshot 2025-08-02 143247" src="https://github.com/user-attachments/assets/4172efca-9e4b-4f18-b3db-e4355509b9c1" />
@@ -74,7 +74,7 @@ diabetes-prediction-app/
 
 ---
 
-## 📸 Screenshot 4 (After Updating the Frontend Background)
+## 📸🎨 Updated Frontend Design
 
 <p align="center">
   <img width="1897" height="910" alt="image" src="https://github.com/user-attachments/assets/b12581c3-73ea-459a-a64b-6e7637336a89" />
